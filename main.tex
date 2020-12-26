@@ -1,0 +1,130 @@
+\documentclass[10pt,openany]{book}
+\usepackage[margin=1in,top=1.25in]{geometry}
+\usepackage[english]{babel}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{kotex, amsmath, amssymb, amsfonts, mathtools, pgf, tikz, enumitem,
+    tabularx, graphicx, float, xfrac, fancyhdr, titletoc, titlesec, tgpagella,
+    multirow, array, bm, etoolbox, esint, overdraw, caption, siunitx, multicol,
+    overdraw}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{fancy}
+    \fancypagestyle{styletoc} {%
+        \fancyhf{}
+        \fancyhead[RE,LO]{Table of Contents}
+        \fancyhead[LE,RO]{\thepage}
+        \fancyfoot[C]{<++>}
+        \renewcommand{\headrulewidth}{0.5pt}
+        \renewcommand{\footrulewidth}{0.5pt}
+    }
+    \fancypagestyle{stylemain} {%
+        \fancyhf{}
+        \fancyhead[RE,LO]{\textsc{\nouppercase{\leftmark}}}
+        \fancyhead[LE,RO]{\thepage}
+        \fancyfoot[C]{<++>}
+        \renewcommand{\headrulewidth}{0.5pt}
+        \renewcommand{\footrulewidth}{0.5pt}
+    }
+    \fancypagestyle{plain} {
+        \fancyhf{}
+        \renewcommand{\headrulewidth}{0pt}
+        \renewcommand{\footrulewidth}{0pt}
+    }
+\renewcommand{\bar}[1]{
+    \mkern 1.5mu\overline{
+        \mkern 1.5mu #1 \mkern 1.5mu
+    } \mkern 1.5mu
+} \setlength{\parindent}{0pt}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\setlength\tabcolsep{0pt}
+\titleformat{\section}{\Large\bfseries}{Section \thesection}{0.5em}{}
+\titlecontents{chapter}[6em]{\addvspace{5pt}} {\contentslabel[\textbf{Chapter%
+    \contentsmargin{20pt} \thecontentslabel\enspace}]{6em}}
+    {\contentsmargin{30pt}\textsf}
+    {\titlerule*[1mm]{ $\cdot$}\contentspage}[\addvspace{0pt}]
+\titlecontents{section}[6em]{}{\contentslabel[\normalfont{Section%
+    \contentsmargin{20pt} \thecontentslabel\enspace}]{5.2em}}
+    {\contentsmargin{20pt}\normalfont}{\titlerule*[1mm]{ $\cdot$}\contentspage}
+    [\addvspace{-2pt}]
+\titlecontents{psection}[6.6em]{}{\contentslabel[\large Section%
+    \contentsmargin{20pt} \thecontentslabel\enspace]{6.2em}\large}
+    {\contentsmargin{20pt} \large}{\titlerule*[1mm]{ $\cdot$}\contentspage}
+    [\addvspace{0pt}]
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=0.5pt] (char) {\footnotesize{#1}};}
+} \AtBeginDocument{%
+    \setlength\abovedisplayskip{3pt}
+    \setlength\belowdisplayskip{3pt}
+    \setlength\abovedisplayshortskip{3pt}
+    \setlength\belowdisplayshortskip{3pt}
+} \newcommand{\callsec}[2]{
+    \chapter{#2}
+    \vspace{\fill}
+    \hrule \vspace{6pt} \startcontents[chapter]\vbox{\textbf{\Large Contents}}
+    \vspace{6pt} \printcontents[chapter]{p}{1}{} \vspace{6pt} \hrule
+    \vspace{\fill} \newpage
+    \foreach \x in {1,...,#1} { \input{ch\thechapter/sec\x} }
+} \sisetup{inter-unit-product = \ensuremath{{\!}\cdot{\!}}}
+\setlist[enumerate,1]{label=\arabic*.,leftmargin=0.2in}
+\setlist[enumerate,2]{label=\arabic*),leftmargin=0.2in}
+\setlist[enumerate,3]{label=\protect\circled{\arabic*},leftmargin=0.2in}
+\setlist[enumerate,4]{label=\roman*),leftmargin=0.25in}
+\makeatletter
+% \renewcommand*\cleardoublepage{\clearpage\if@twoside
+%     \ifodd\c@page \hbox{}\newpage \if@twocolumn\hbox{}%
+%     \newpage\fi\fi\fi
+% }
+\let\mytagform@=\tagform@
+\def\tagform@#1{\maketag@@@{\scshape(\ignorespaces#1\unskip\@@italiccorr)}%
+    \hspace{3mm}}
+\renewcommand{\eqref}[1]{\textsc{eq \ref{#1}}}
+\makeatother
+\NewDocumentCommand \widecaps { o o m } {%
+    \IfNoValueTF{#1} {%
+        \parbox{\linewidth}{%
+            \IfNoValueTF{#2} {%
+                \captionog{figure}{#3}%
+            } {%
+                \captionof{#2}{#3}%
+            }%
+        }%
+    } {%
+        \parbox{#1}{%
+            \IfNoValueTF{#2} {%
+                \captionog{figure}{#3}%
+            } {%
+                \captionof{#2}{#3}%
+            }%
+        }%
+    }%
+}
+\input{codeformat}
+\input{mathformat}
+
+\begin{document}
+\begin{titlepage}
+    \title{<++>}
+    \author{A Student Manual}
+    \date{\textsc{powered by} \LaTeX{}}
+\maketitle
+\end{titlepage}
+\thispagestyle{empty}
+\pagestyle{styletoc}
+\tableofcontents
+% \thispagestyle{empty}
+
+% \addtocounter{chapter}{-1} % If Book Starts from Chap. 0
+\pagestyle{stylemain}
+
+% Copy and Paste to match Chapter Amount
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+\callsec{<++>}{<++>}
+
+\end{document}

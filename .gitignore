@@ -1,0 +1,4 @@
+# Ignore LaTeX Compilation Auxiliary Files
+**.aux
+**.tox
+**.log

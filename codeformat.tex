@@ -1,0 +1,46 @@
+\NewDocumentCommand \mi<++> { o } {%
+    \IfValueTF{#1} {%
+        \mintinline[#1]{<++>}%
+    } {%
+        \mintinline{<++>}%
+    }%
+}
+
+\SetupFloatingEnvironment{listing}{name=Code}
+\captionsetup[listing]{aboveskip=0pt,belowskip=0pt,format=hang,font=small}
+\NewDocumentCommand \im<++> { o o m o } {%
+  % \begin{framed}
+    \IfNoValueTF{#2} {%
+        \IfNoValueTF{#1} {%
+            \inputminted[fontsize=\small,xleftmargin=0.25in,linenos,breaklines]%
+                {<++>}{#3}%
+        } {%
+            \inputminted[fontsize=\small,xleftmargin=0.25in,linenos,breaklines,%
+                firstline=#1,lastline=#1]{<++>}{#3}%
+        }%
+    } {%
+        \inputminted[fontsize=\small,xleftmargin=0.25in,linenos,breaklines,%
+            firstline=#1,lastline=#2]{<++>}{#3}%
+    } \IfValueT{#4}{\widecaps{#4}}%
+  % \end{framed}
+}
+
+\DeclareFloatingEnvironment[name=Result]{result}
+\captionsetup[result]{aboveskip=0pt,belowskip=0pt,format=hang,font=small}
+\NewDocumentCommand \res { o o m o } {%
+  % \begin{framed}
+    \IfNoValueTF{#2} {%
+        \IfNoValueTF{#1} {%
+            \lstinputlisting[basicstyle=\ttfamily\small,breaklines,%
+                columns=fullflexible]{#3}%
+        } {%
+            \lstinputlisting[basicstyle=\ttfamily\small,breaklines,%
+                columns=fullflexible,firstline=#1,lastline=#1]{#3}%
+        }%
+    } {%
+        \lstinputlisting[basicstyle=\ttfamily\small,breaklines,%
+            columns=fullflexible,firstline=#1,lastline=#2]{#3}%
+    }%
+  % \end{framed}
+    \IfValueT{#4}{\widecaps{#4}}%
+}
