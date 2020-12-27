@@ -12,7 +12,7 @@
         \fancyhf{}
         \fancyhead[RE,LO]{Table of Contents}
         \fancyhead[LE,RO]{\thepage}
-        \fancyfoot[C]{<++>}
+        \fancyfoot[C]{Learn SICP}
         \renewcommand{\headrulewidth}{0.5pt}
         \renewcommand{\footrulewidth}{0.5pt}
     }
@@ -20,7 +20,7 @@
         \fancyhf{}
         \fancyhead[RE,LO]{\textsc{\nouppercase{\leftmark}}}
         \fancyhead[LE,RO]{\thepage}
-        \fancyfoot[C]{<++>}
+        \fancyfoot[C]{Learn SICP}
         \renewcommand{\headrulewidth}{0.5pt}
         \renewcommand{\footrulewidth}{0.5pt}
     }
@@ -62,6 +62,7 @@
     \hrule \vspace{6pt} \startcontents[chapter]\vbox{\textbf{\Large Contents}}
     \vspace{6pt} \printcontents[chapter]{p}{1}{} \vspace{6pt} \hrule
     \vspace{\fill} \newpage
+    \input{ch\thechapter/headnote} \newpage
     \foreach \x in {1,...,#1} { \input{ch\thechapter/sec\x} }
 } \sisetup{inter-unit-product = \ensuremath{{\!}\cdot{\!}}}
 \setlist[enumerate,1]{label=\arabic*.,leftmargin=0.2in}
@@ -98,12 +99,11 @@
     }%
 }
 \input{codeformat}
-\input{mathformat}
 
 \begin{document}
 \begin{titlepage}
-    \title{<++>}
-    \author{A Student Manual}
+    \title{Learn SICP}
+    \author{A Student Documentation}
     \date{\textsc{powered by} \LaTeX{}}
 \maketitle
 \end{titlepage}
@@ -116,15 +116,10 @@
 \pagestyle{stylemain}
 
 % Copy and Paste to match Chapter Amount
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
-\callsec{<++>}{<++>}
+\callsec{3}{Building Abstractions with Procedures}
+\callsec{5}{Building Abstarctions with Data}
+\callsec{5}{Modularity, Objects and State}
+\callsec{4}{Metalinguistic Abstraction}
+\callsec{5}{Computing with Register Machines}
 
 \end{document}
